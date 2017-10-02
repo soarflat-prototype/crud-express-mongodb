@@ -1,5 +1,6 @@
 # crud-express-mongodb
-[Building a Simple CRUD Application with Express and MongoDB](Building a Simple CRUD Application with Express and MongoDB)
+- [Building a Simple CRUD Application with Express and MongoDB](https://zellwk.com/blog/crud-express-mongodb/)
+- [Building a Simple CRUD Application with Express and MongoDB Part2](https://zellwk.com/blog/crud-express-and-mongodb-2/)
 
 # OverView
 ExpressとMongoDBを利用したCRUDなアプリケーションを制作する。
