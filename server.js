@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const bodyPerser = require('body-parser');
+const methodOverride = require('method-override')
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
 
@@ -19,8 +20,8 @@ MongoClient.connect(`mongodb://${dbUser}:${dbPassword}@${dbName}`, (err, databas
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'pug');
 
-  // 静的アセットファイルが格納されているディレクトリを指定
-  app.use('/static', express.static(__dirname + '/public'));
+  // override with POST having ?_method=PUT
+  app.use(methodOverride('_method'));
 
   // Expressのミドルウェアであるbody-parserを利用する
   // urlencodedメソッドは、<form>要素からデータを抽出し、requestオブジェクトのbodyプロパティに追加する
@@ -52,6 +53,5 @@ MongoClient.connect(`mongodb://${dbUser}:${dbPassword}@${dbName}`, (err, databas
   });
 
   app.put('/quotes', (req, res) => {
-    // Handle put request
   });
 });

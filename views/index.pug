@@ -9,5 +9,5 @@ html
           p= quote.name
           p= quote.quote
 
-    button#update Darth Vadar invades!
-    script(src="main.js")
+    form(method="POST", action="quotes?_method=PUT")
+      button Darth Vadar invades!
