@@ -1,0 +1,22 @@
+{
+  "name": "crud-express-mongodb",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Building a Simple CRUD Application with Express and MongoDB",
+  "main": "index.js",
+  "author": "soarflat",
+  "license": "MIT",
+  "scripts": {
+    "start": "nf run nodemon server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongodb": "^2.2.31",
+    "pug": "^2.0.0-rc.3"
+  },
+  "devDependencies": {
+    "foreman": "^2.0.0",
+    "nodemon": "^1.11.0"
+  }
+}
