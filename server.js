@@ -19,6 +19,9 @@ MongoClient.connect(`mongodb://${dbUser}:${dbPassword}@${dbName}`, (err, databas
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'pug');
 
+  // 静的アセットファイルが格納されているディレクトリを指定
+  app.use('/static', express.static(__dirname + '/public'));
+
   // Expressのミドルウェアであるbody-parserを利用する
   // urlencodedメソッドは、<form>要素からデータを抽出し、requestオブジェクトのbodyプロパティに追加する
   app.use(bodyPerser.urlencoded({ extended: true }));
@@ -29,7 +32,6 @@ MongoClient.connect(`mongodb://${dbUser}:${dbPassword}@${dbName}`, (err, databas
 
   app.get('/', (req, res) => {
     db.collection('quotes').find().toArray((err, results) => {
-      console.log(results);
       res.render('index', { quotes: results });
     });
   });
@@ -47,5 +49,9 @@ MongoClient.connect(`mongodb://${dbUser}:${dbPassword}@${dbName}`, (err, databas
       console.log('saved to database');
       res.redirect('/');
     });
+  });
+
+  app.put('/quotes', (req, res) => {
+    // Handle put request
   });
 });
