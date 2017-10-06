@@ -1,13 +1,26 @@
 html
-  head
-    title Building a Simple CRUD Application with Express and MongoDB
-  body
-    h1 Building a Simple CRUD Application with Express and MongoDB
-    ul
-      each quote in quotes
-        li.quote
-          p= quote.name
-          p= quote.quote
+    head
+        title Building a Simple CRUD Application with Express and MongoDB
+    body
+        h1 Building a Simple CRUD Application with Express and MongoDB
+        ul
+            each quote in quotes
+                li.quote
+                    p [name]: #{quote.name}
+                    p [quote]: #{quote.quote}
+        h1 Create
+            form(action="quotes", method="POST")
+                input(type="text", placeholder="name", name="name")
+                input(type="text", placeholder="quote", name="quote")
+                button(type="submit") Submit
 
-    form(method="POST", action="quotes?_method=PUT")
-      button Darth Vadar invades!
+        h1 Update
+            form(method="POST", action="quotes?_method=PUT")
+                input(type="text", placeholder="name", name="name")
+                input(type="text", placeholder="quote", name="quote")
+                button(type="submit") Submit
+
+        h1 Delete
+            form(method="POST", action="quotes?_method=DELETE")
+                input(type="text", placeholder="name", name="name")
+                button(type="submit") Submit

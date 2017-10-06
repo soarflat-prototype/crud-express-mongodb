@@ -53,5 +53,31 @@ MongoClient.connect(`mongodb://${dbUser}:${dbPassword}@${dbName}`, (err, databas
   });
 
   app.put('/quotes', (req, res) => {
+    db.collection('quotes')
+      .findOneAndUpdate({ name: req.body.name }, {
+        $set: {
+          name: req.body.name,
+          quote: req.body.quote,
+        }
+      }, {
+        sort: { _id: -1 },
+        upset: true,
+      }, (err, result) => {
+        if (err) {
+          return console.log(err)
+        }
+
+        console.log('updated to database');
+        res.redirect('/');
+      });
+  });
+
+  app.delete('/quotes', (req, res) => {
+    db.collection('quotes')
+      .findOneAndDelete({ name: req.body.name }, (err, result) => {
+        if (err) return res.send(500, err);
+        console.log('deleted to database');
+        res.redirect('/');
+      });
   });
 });
